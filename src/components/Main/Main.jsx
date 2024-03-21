@@ -40,7 +40,7 @@ const Main = () => {
       <h2 className="main__title">Enter Your Ingredients</h2>
       <form className="main__form" onSubmit={handleSubmit}>
         <div className="main__form-input-wrapper">
-          <label htmlFor="ingredients">INGREDIENTS:</label>
+          <label htmlFor="ingredients">Ingredients:</label>
           <input
             type="text"
             name="ingredient"
@@ -49,11 +49,11 @@ const Main = () => {
           />
         </div>
         <div className="main__form-input-wrapper">
-          <label htmlFor="ingredients">NUMBER:</label>
+          <label htmlFor="ingredients">Number of Recipes Requested:</label>
           <input
             type="text"
             name="number"
-            className="main__form-input"
+            className="main__form-input main__form-input-number"
             onChange={handleNumChange}
           />
         </div>
