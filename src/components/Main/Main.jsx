@@ -6,7 +6,7 @@ const Main = () => {
   const [number, setNumber] = useState(0);
 
   const handleInputChange = (e) => {
-    setIngredients(e.target.value);
+    setIngredients(e.target.value.replaceAll(" ", "+"));
   };
   const handleNumChange = (e) => {
     setNumber(e.target.value);
@@ -14,18 +14,17 @@ const Main = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(
-      `ingredients=${ingredients.replaceAll(" ", "+")}&number=${number}`
-    );
-    const makeRequest = async () => {
+    console.log(ingredients, number);
+    const makeRequest = async (ingredients, number) => {
       await axios
-        .get(
-          "https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=2&apiKey=1dd66b091ffd463f8a2222242ddfdaa0"
-        )
+        .post("http://localhost:8080/recipes", {
+          ingredients: ingredients,
+          number: number,
+        })
         .then((res) => console.log(res.data))
         .catch((e) => console.error(e));
     };
-    makeRequest();
+    makeRequest(ingredients, number);
   };
 
   return (
