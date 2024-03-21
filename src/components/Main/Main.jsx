@@ -38,10 +38,14 @@ const Main = () => {
     <main className="main">
       <h2 className="main__title">Enter Your Ingredients</h2>
       <form className="main__form" onSubmit={handleSubmit}>
-        <label htmlFor="ingredients">INGREDIENTS LIST:</label>
-        <input type="text" name="ingredient" onChange={handleInputChange} />
-        <label htmlFor="ingredients">NUMBER:</label>
-        <input type="text" name="number" onChange={handleNumChange} />
+        <div className="main__form-input-wrapper">
+          <label htmlFor="ingredients">INGREDIENTS:</label>
+          <input type="text" name="ingredient" className="main__form-input" onChange={handleInputChange} />
+        </div>
+        <div className="main__form-input-wrapper">
+          <label htmlFor="ingredients">NUMBER:</label>
+          <input type="text" name="number" className="main__form-input" onChange={handleNumChange} />
+        </div>
         <button>Submit</button>
       </form>
       <div className="card-container">

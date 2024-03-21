@@ -1,0 +1,36 @@
+@use "../../styles/partials/variables" as *;
+
+.main {
+    padding: 3rem 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.75rem;
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        gap: .75rem;
+    }
+
+    &__form-input-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    &__form-input {
+        padding: .5rem;
+        border-radius: 8px;
+        border: 1px solid #000;
+    }
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: 2rem;
+}
