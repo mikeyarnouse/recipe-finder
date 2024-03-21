@@ -17,8 +17,6 @@ const Main = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(ingredients, number);
-    // console.log(currentIngredients);
     const makeRequest = async (ingredients, number) => {
       await axios
         .post("http://localhost:8080/recipes", {
@@ -26,8 +24,11 @@ const Main = () => {
           number: number,
         })
         .then((res) => {
-          console.log(res.data);
-          setRecipeList(res.data);
+          setRecipeList(
+            res.data.filter(
+              (r) => r.title !== "Smoothies" && r.title !== "Beverages"
+            )
+          );
         })
         .catch((e) => console.error(e));
     };
@@ -40,16 +41,27 @@ const Main = () => {
       <form className="main__form" onSubmit={handleSubmit}>
         <div className="main__form-input-wrapper">
           <label htmlFor="ingredients">INGREDIENTS:</label>
-          <input type="text" name="ingredient" className="main__form-input" onChange={handleInputChange} />
+          <input
+            type="text"
+            name="ingredient"
+            className="main__form-input"
+            onChange={handleInputChange}
+          />
         </div>
         <div className="main__form-input-wrapper">
           <label htmlFor="ingredients">NUMBER:</label>
-          <input type="text" name="number" className="main__form-input" onChange={handleNumChange} />
+          <input
+            type="text"
+            name="number"
+            className="main__form-input"
+            onChange={handleNumChange}
+          />
         </div>
-        <button>Submit</button>
+        <button type="submit" className="main__form__btn">
+          Submit
+        </button>
       </form>
       <div className="card-container">
-        {console.log(recipeList)}
         {recipeList.map((r) => {
           return (
             <Card
